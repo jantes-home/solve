@@ -132,28 +132,28 @@ public class ShortStoreTest {
             model.fetch("");
             fail("Incorrectly handled empty URL");
         } catch (UnknownURLException e) {
-            assertEquals(e.getMessage(),"");
+            assertEquals("Unknown URL: \"\"", e.getMessage());
         }
 
         try {
             model.fetch("https://example.com/library/react");
             fail("Incorrectly handled wrong URL");
         } catch (UnknownURLException e) {
-            assertEquals(e.getMessage(),"https://example.com/library/react");
+            assertEquals(e.getMessage(),"Unknown URL: \"https://example.com/library/react\"");
         }
 
         try {
             model.fetch("http://short.est/gAAAAMY8th0AAAAD");
             fail("Incorrectly handled too many values");
         } catch (UnknownURLException e) {
-            assertEquals("http://short.est/gAAAAMY8th0AAAAD",e.getMessage());
+            assertEquals("Unknown URL: \"http://short.est/gAAAAMY8th0AAAAD\"",e.getMessage());
         }
 
         try {
             model.fetch("http://short.est/A");
             fail("Incorrectly handled URL not in dictionary");
         } catch (UnknownURLException e) {
-            assertEquals("http://short.est/A",e.getMessage());
+            assertEquals("Unknown URL: \"http://short.est/A\"",e.getMessage());
         }
 
         try {
@@ -161,7 +161,7 @@ public class ShortStoreTest {
             model.fetch("http://short.est/QAAAAA");
             fail("Incorrectly handled URL list count");
         } catch (UnknownURLException e) {
-            assertEquals("http://short.est/QAAAAA",e.getMessage());
+            assertEquals("Unknown URL: \"http://short.est/QAAAAA\"",e.getMessage());
         }
     }
 }

@@ -6,7 +6,7 @@ public class UnknownURLException extends Exception {
      * @param url
      */
     public UnknownURLException(String url) {
-        super("Unknown URL: \""+url+"\"");
+        super("unknown URL: "+url);
     }
     
 }

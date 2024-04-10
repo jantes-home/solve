@@ -59,16 +59,16 @@ public class ShortController {
      */
     @ExceptionHandler(UnknownURLException.class)
     public ResponseEntity<String> handleUnknownUrlException(UnknownURLException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("bad request: " + ex.getMessage());
     }
     
     @ExceptionHandler(MalformedURLException.class)
     public ResponseEntity<String> handleMalformedURLException(MalformedURLException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("bad request: " + ex.getMessage());
     }
         
     @ExceptionHandler(URISyntaxException.class)
     public ResponseEntity<String> handleMalformedURLException(URISyntaxException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("bad request: " + ex.getMessage());
     }
 }

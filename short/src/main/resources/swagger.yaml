@@ -32,7 +32,7 @@ paths:
   /encode:
     get:
       summary: Get the shortlink URL
-      description: Get the shortlink url for the given rul
+      description: Returns the shortlink URL for the specified URL.
       operationId: encode
       parameters:
         - name: url
@@ -54,7 +54,7 @@ paths:
   /decode:
     get:
       summary: Get the original URL from the shortlink URL
-      description: Get the original URL
+      description: Retrieves the original URL encoded by the given shortlink URL.
       operationId: decode
       parameters:
         - name: url

@@ -59,7 +59,7 @@ public class ShortController {
      */
     @ExceptionHandler(UnknownURLException.class)
     public ResponseEntity<String> handleUnknownUrlException(UnknownURLException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("bad request: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found: " + ex.getMessage());
     }
     
     @ExceptionHandler(MalformedURLException.class)

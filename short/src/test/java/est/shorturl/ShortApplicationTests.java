@@ -81,8 +81,8 @@ class ShortApplicationTests {
 
 		mockMvc.perform(MockMvcRequestBuilders.get("/decode")
 				.param("url", model.getShortUrl()))
-				.andExpect(MockMvcResultMatchers.status().isBadRequest())
+				.andExpect(MockMvcResultMatchers.status().isNotFound())
 				.andExpect(MockMvcResultMatchers.content()
-						.string("bad request: unknown URL: http://short.est/AMY8th0"));
+						.string("not found: unknown URL: http://short.est/AMY8th0"));
 	}
 }

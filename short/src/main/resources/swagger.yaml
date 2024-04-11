@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: ShortLink URL shortening service
+  description: |-
+    This is an assignment is to implement a URL shortening service using Java and Spring.
+    
+    ShortLink is a URL shortening service where you enter a URL such as https://example.com/library/react and it returns a short URL such as http://short.est/GeAi9K.
+
+    Tasks
+    - Implement assignment using:
+      - Language: Java
+      - Framework: Spring
+      - Two endpoints are required
+        - /encode - Encodes a URL to a shortened URL
+        - /decode - Decodes a shortened URL to its original URL.
+      - Both endpoints should return JSON
+    - There is no restriction on how your encode/decode algorithm should work. You just need to make sure that a URL can be encoded to a short URL and the short URL can be decoded to the original URL. You do not need to persist short URLs to a database. Keep them in memory.
+    - Provide detailed instructions on how to run your assignment in a separate markdown file
+    - Provide API tests for both endpoints
+    
+    Evaluation Criteria
+      - Java best practices
+      - API implemented featuring a /encode and /decode endpoint
+      - Show us your work through your commit history
+      - Completeness: did you complete the features? Are all the tests running?
+      - Correctness: does the functionality act in sensible, thought-out ways?
+      - Maintainability: is it written in a clean, maintainable way?
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080/
+paths:
+  /encode:
+    get:
+      summary: Get the shortlink URL
+      description: Get the shortlink url for the given rul
+      operationId: encode
+      parameters:
+        - name: url
+          in: query
+          description: The original URL
+          required: true
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShortLink'          
+        '400':
+          description: Malformed URL supplied
+  /decode:
+    get:
+      summary: Get the original URL from the shortlink URL
+      description: Get the original URL
+      operationId: decode
+      parameters:
+        - name: url
+          in: query
+          description: The original URL
+          required: true
+          explode: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShortLink'          
+        '400':
+          description: Malformed URL supplied
+        '404':
+          description: Unknown URL supplied
+components:
+  schemas:
+    ShortLink:
+      type: object
+      properties:
+        originalUrl:
+          type: string
+          example: "https://example.com/library/react"
+        shortUrl:
+          type: string
+          example: "http://short.est/PdE6o"

@@ -14,7 +14,7 @@ Request Method:
 - GET
 
 Parameters:
-- url  The original URL
+- *url*  : The original URL
 
 Example:
 ```
@@ -22,14 +22,17 @@ http://localhost:8080/encode?url=https://example.com/library/react
 ```
 
 Responses:
-- 200 : Successful operation
+- **200** : Successful operation
 ```json
 {
   "originalUrl": "https://example.com/library/react",
   "shortUrl": "http://short.est/PdE6o"
 }
 ```
-- 400 : malformed URL supplied
+- **400** : malformed URL supplied
+```
+bad request: no protocol: Hello World!
+```
 
 ### /decode 
 
@@ -39,7 +42,7 @@ Request Method:
 - GET
 
 Parameters:
-- url  The shortlink URL
+- *url*  : The shortlink URL
 
 Example:
 ```
@@ -47,15 +50,21 @@ http://localhost:8080/decode?url=http://short.est/PdE6o
 ```
 
 Responses:
-- 200 : Successful operation
+- **200** : Successful operation
 ```json
 {
   "originalUrl": "https://example.com/library/react",
   "shortUrl": "http://short.est/PdE6o"
 }
 ```
-- 400 : malformed URL supplied
-- 404 : unknown URL supplied. No URL has been encoded to produce this shortlink
+- **400** : malformed URL supplied
+```
+bad request: no protocol: Hello World!
+```
+- **404** : unknown URL supplied. No URL has been encoded to produce this shortlink
+```
+not found: unknown URL: http://short.est/AMY8th0
+```
 
 ## Build
 

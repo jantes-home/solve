@@ -2,7 +2,7 @@
 
 ## Summary
 
-ShortLink is a URL shortening service where you enter a URL such as https://example.com/library/react and it returns a short URL such as http://short.est/GeAi9K.
+ShortLink is a URL shortening service where you enter a URL such as https://example.com/library/react and it returns a short URL such as http://short.est/PdE6o.
 
 ## Endpoints
 
@@ -10,8 +10,16 @@ ShortLink is a URL shortening service where you enter a URL such as https://exam
 
 Returns the shortlink URL for the specified URL.
 
+Request Method:
+- GET
+
 Parameters:
 - url  The original URL
+
+Example:
+```
+http://localhost:8080/encode?url=https://example.com/library/react
+```
 
 Responses:
 - 200 : Successful operation
@@ -23,12 +31,20 @@ Responses:
 ```
 - 400 : malformed URL supplied
 
-### /decode
+### /decode 
 
 Retrieves the original URL encoded by the given shortlink URL.
 
+Request Method:
+- GET
+
 Parameters:
 - url  The shortlink URL
+
+Example:
+```
+http://localhost:8080/decode?url=http://short.est/PdE6o
+```
 
 Responses:
 - 200 : Successful operation
@@ -43,12 +59,17 @@ Responses:
 
 ## Build
 
-Build using maven, then build a run the docker file.
+Build using maven and then build the docker file.
 
 ```
 cd short
 mvn install
 docker build -t shortlink .
+```
+
+To run the docker file
+
+```
 docker run -p 8080:8080 shortlink
 ```
 
@@ -73,4 +94,4 @@ Both of these call should produce:
 
 ## Links
 
-- [Swagger Docs](https://github.com/jantes-home/solve/blob/main/short/src/main/resources/swagger.yaml)
+- [Swagger Docs](https://github.com/jantes-home/solve/blob/main/short/src/main/resources/swagger.yaml?raw=true)

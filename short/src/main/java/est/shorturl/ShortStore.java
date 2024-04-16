@@ -33,15 +33,18 @@ public class ShortStore {
      */
     public String store(String url) {
         final int hash = url.hashCode();
-        List<String> urls = urlMap.get(hash);
-        if (urls == null) {
-            urls = new ArrayList<>();
-            urlMap.put(hash, urls);
-        }
-        int idx = urls.indexOf(url);
-        if (idx < 0) {
-            idx = urls.size();
-            urls.add(url);
+        int idx;
+        synchronized(this) {
+            List<String> urls = urlMap.get(hash);
+            if (urls == null) {
+                urls = new ArrayList<>();
+                urlMap.put(hash, urls);
+            }
+            idx = urls.indexOf(url);
+            if (idx < 0) {
+                idx = urls.size();
+                urls.add(url);
+            }
         }
 
         return URL_PREFIX + stripLeadingA(encodeIntArray(new int[] { idx, hash }));
